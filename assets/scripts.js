@@ -18,14 +18,15 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
     } else {
         applyTheme(systemPrefersDark ? "dark" : "light"); 
     }
+    if (togglebtn) {
+        togglebtn.addEventListener("click", () => { // theme switching, click script
+            const currentTheme = body.classList.contains("darkmode") ? "dark" : "light";
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-    togglebtn.addEventListener("click", () => { // theme switching, click script
-        const currentTheme = body.classList.contains("darkmode") ? "dark" : "light";
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-        applyTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-    });
+            applyTheme(newTheme);
+            localStorage.setItem("theme", newTheme);
+        });
+    }
 
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => { // live reloading
         if (!localStorage.getItem("theme")) { 
@@ -34,14 +35,17 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
     });
 });
 
+// UPDATE HEADER TEXT
 function updateLogoText() {
     const logoText = document.querySelector(".logotext"); // Header text shorten
-    if (window.innerWidth <= 480) {
+    if (logoText) {
+        if (window.innerWidth <= 480) {
         logoText.textContent = "geode";
-    } else {
-        logoText.textContent = "geodes silly side";
+        } else {
+            logoText.textContent = "geodes silly side";
+        }
     }
 }
-// UPDATE LOGO TEXT
+
 updateLogoText();
 window.addEventListener("resize", updateLogoText);
