@@ -1,1 +1,3 @@
-https://geodearc.github.io
+# my silly site
+
+https://gdrc.me
