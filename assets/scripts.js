@@ -42,7 +42,7 @@ function updateLogoText() {
         if (window.innerWidth <= 480) {
         logoText.textContent = "geode";
         } else {
-            logoText.textContent = "geodes silly side";
+            logoText.textContent = "geodes silly site";
         }
     }
 }
