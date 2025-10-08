@@ -15,7 +15,7 @@
 }
 .darkmode {
   --base-color: #101010;
-  --base-secondary: #090b14;
+  --base-secondary: #11162d;
   --text-color: #ffffff;
   --text-secondary: #e0e0e0;
   --primary-color: #294851;
@@ -161,6 +161,8 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  margin: 20px 0;
 }
 .stroop-initial h1 {
   font-size: 50px;
@@ -174,14 +176,15 @@ nav {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 600px;
+  width: 500px;
   padding: 20px;
-  gap: 10px;
+  padding-bottom: 25px;
   border-radius: 10px;
-  background-color: var(--base-color);
+  background-color: var(--base-secondary);
 }
 .stroop-info p {
   font-size: 18px;
+  margin: 10px;
 }
 .stroop-buttons {
   display: flex;
@@ -204,7 +207,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 .stroop-main {
   display: flex;
@@ -233,13 +236,17 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin-top: 100px;
+  gap: 20px;
 }
-.test-status {
-  padding: 10px;
-  margin: 30px;
+.stroop-next {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   font-size: 20px;
-  color: #ff0000;
+  cursor: pointer;
 }
 
 /* footer */
@@ -271,5 +278,11 @@ footer {
   #bg {
     width: 1200px;
     height: auto;
+  }
+  .stroop-info {
+    width: 80% !important;
+  }
+  .stroop-initial h1 {
+    font-size: 40px !important;
   }
 }

@@ -1,18 +1,8 @@
-(() => {
-    // ----- Test data (non-random, in given order) -----
-    const tests = {
-        1: {
-            texts: ['LEFT','RIGHT','UP','RIGHT','DOWN','RIGHT','LEFT','UP','LEFT','RIGHT'],
-            images: ['arrow-l.png','arrow-r.png','arrow-u.png','arrow-r.png','arrow-d.png','arrow-r.png','arrow-l.png','arrow-u.png','arrow-l.png','arrow-r.png']
-        },
-        2: {
-            texts: ['LEFT','UP','RIGHT','DOWN','UP','LEFT','UP','RIGHT','DOWN','LEFT'],
-            images: ['arrow-r.png','arrow-r.png','arrow-d.png','arrow-l.png','arrow-d.png','arrow-u.png','arrow-l.png','arrow-d.png','arrow-r.png','arrow-u.png']
-        }
-    };
+// chatgpt aah (look i needed to do this quickly dont judge me)
 
+(() => {
     const ASSET_BASE = '../assets/stroop/'; // image path base
-    const TOTAL = 10;
+    const TOTAL = 10; // number of questions per test
 
     // ----- UI elements -----
     const initialScreen = document.querySelector('.stroop-initial');
@@ -27,29 +17,30 @@
     const imgEl = document.querySelector('.stroop-img');
     const textEl = document.querySelector('.stroop-text');
     const countdownEl = document.querySelector('.stroop-initialcountdown');
-    const statusEl = document.querySelector('.test-status');
+    const nextBtn = document.querySelector('.stroop-next');
 
-    // Ensure container hidden initially
+    // Hide container & next button initially
     container.style.display = 'none';
+    nextBtn.style.display = 'none';
 
     // ----- State -----
     let running = false;
-    let activeTest = null; // 1 or 2
+    let activeTest = null;
     let index = 0;
     let startTime = 0;
     let timerInterval = null;
     let countdownInterval = null;
     let keyHandler = null;
     let elapsedWhenStopped = 0;
+    let questions = [];
 
     // ----- Helpers -----
-    function imageDirectionFromFilename(filename) {
-        if (filename.includes('-l')) return 'ArrowLeft';
-        if (filename.includes('-r')) return 'ArrowRight';
-        if (filename.includes('-u')) return 'ArrowUp';
-        if (filename.includes('-d')) return 'ArrowDown';
-        return null;
-    }
+    const directions = [
+        { text: 'LEFT', img: 'arrow-l.png' },
+        { text: 'RIGHT', img: 'arrow-r.png' },
+        { text: 'UP', img: 'arrow-u.png' },
+        { text: 'DOWN', img: 'arrow-d.png' }
+    ];
 
     function formatTimeMs(ms) {
         return (ms / 1000).toFixed(2) + ' s';
@@ -62,19 +53,55 @@
         testTimeEl.textContent = formatTimeMs(elapsed);
     }
 
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function generateQuestions(testNum) {
+        let q = [];
+        if (testNum === 1) {
+            // Matching text+arrow
+            for (let i = 0; i < TOTAL; i++) {
+                const dir = directions[Math.floor(Math.random() * directions.length)];
+                q.push({ text: dir.text, img: dir.img });
+            }
+        } else {
+            // Non-matching text+arrow
+            for (let i = 0; i < TOTAL; i++) {
+                const textDir = directions[Math.floor(Math.random() * directions.length)];
+                let arrowDir;
+                do {
+                    arrowDir = directions[Math.floor(Math.random() * directions.length)];
+                } while (arrowDir.text === textDir.text); // ensure mismatch
+                q.push({ text: textDir.text, img: arrowDir.img });
+            }
+        }
+        return shuffleArray(q);
+    }
+
     // ----- Present a question -----
     function presentQuestion() {
-        statusEl.textContent = ''; // clear status
-        const test = tests[activeTest];
-        const txt = test.texts[index];
-        const img = test.images[index];
-
-        imgEl.src = ASSET_BASE + img;
-        imgEl.alt = txt + ' (arrow)';
-        textEl.textContent = txt;
+        const q = questions[index];
+        imgEl.src = ASSET_BASE + q.img;
+        imgEl.alt = q.text + ' (arrow)';
+        textEl.textContent = q.text;
         testQuestionsEl.textContent = `Question ${index + 1} of ${TOTAL}`;
-        // update the live timer immediately so it shows 0.00 right after start
         updateLiveTimer();
+    }
+
+    // ----- Advance question (shared by space + button) -----
+    function advanceQuestion() {
+        if (!running) return;
+        index += 1;
+        if (index >= TOTAL) {
+            finishTest();
+        } else {
+            presentQuestion();
+        }
     }
 
     // ----- Start countdown then test -----
@@ -84,27 +111,27 @@
         activeTest = testNum;
         index = 0;
         elapsedWhenStopped = 0;
+        questions = generateQuestions(testNum);
 
         // prepare UI
         initialScreen.style.display = 'none';
         container.style.display = 'block';
         testTitleEl.textContent = `Test ${activeTest}`;
         testTimeEl.textContent = '0.00 s';
-        statusEl.textContent = '';
 
-        // Always clear everything before countdown starts
+        // Clear before countdown
         imgEl.src = '';
         textEl.textContent = '';
         countdownEl.textContent = '';
 
+        // Hide during countdown
+        textEl.style.display = 'none';
+        imgEl.style.display = 'none';
+        nextBtn.style.display = 'none';
+
         // 3-second countdown
         let countdown = 3;
         countdownEl.textContent = countdown;
-
-        // Ensure text/arrow are hidden during countdown
-        textEl.style.display = 'none';
-        imgEl.style.display = 'none';
-
         countdownInterval = setInterval(() => {
             countdown -= 1;
             if (countdown > 0) {
@@ -113,73 +140,50 @@
                 clearInterval(countdownInterval);
                 countdownEl.textContent = '';
 
-                // Restore visibility for test run
+                // Restore visibility
                 textEl.style.display = '';
                 imgEl.style.display = '';
+                nextBtn.style.display = 'inline-block';
 
                 beginTestRun();
             }
         }, 1000);
     }
 
-
-
-    // ----- Begin the test run: start stopwatch and attach key listener -----
+    // ----- Begin the test run -----
     function beginTestRun() {
-        // start stopwatch
         startTime = performance.now();
         timerInterval = setInterval(updateLiveTimer, 50);
 
-        // show first question
         presentQuestion();
 
-        // key handler
         keyHandler = function (ev) {
-            // only Arrow keys are relevant
-            if (!ev || !ev.key || !ev.key.startsWith('Arrow')) return;
-
-            const test = tests[activeTest];
-            const correct = imageDirectionFromFilename(test.images[index]);
-
-            if (ev.key === correct) {
-            // correct -> move to next question
-            index += 1;
-            if (index >= TOTAL) {
-                finishTest();
-            } else {
-                presentQuestion();
-            }
-            } else {
-            // incorrect -> do NOT advance, show status
-            statusEl.textContent = 'Incorrect — try again';
+            if (ev.code === 'Space') {
+                ev.preventDefault(); // stop page scrolling
+                advanceQuestion();
             }
         };
-
         window.addEventListener('keydown', keyHandler);
+
+        nextBtn.addEventListener('click', advanceQuestion);
     }
 
     // ----- Finish test -----
     function finishTest() {
-        // stop timers and key listener
         const endTime = performance.now();
         elapsedWhenStopped = endTime - startTime;
         running = false;
 
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        }
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
-        }
-
+        if (timerInterval) clearInterval(timerInterval);
+        if (countdownInterval) clearInterval(countdownInterval);
         if (keyHandler) {
             window.removeEventListener('keydown', keyHandler);
             keyHandler = null;
         }
 
-        // update the corresponding score element on initial screen
+        nextBtn.style.display = 'none';
+        nextBtn.removeEventListener('click', advanceQuestion);
+
         const formatted = formatTimeMs(elapsedWhenStopped);
         if (activeTest === 1) {
             score1El.textContent = formatted;
@@ -187,34 +191,30 @@
             score2El.textContent = formatted;
         }
 
-        // Reset UI: show initial and hide container
         container.style.display = 'none';
         initialScreen.style.display = 'flex';
 
-        // clear values in container for next run
         testTitleEl.textContent = '';
         testQuestionsEl.textContent = '';
         testTimeEl.textContent = '';
         imgEl.src = '';
         textEl.textContent = '';
         countdownEl.textContent = '';
-        statusEl.textContent = '';
         activeTest = null;
     }
 
+
     // ----- Wire up buttons -----
-    // Expect two buttons: first = Test 1, second = Test 2
     if (startButtons.length >= 2) {
         startButtons[0].addEventListener('click', () => startCountdownAndTest(1));
         startButtons[1].addEventListener('click', () => startCountdownAndTest(2));
-        } else {
+    } else {
         console.warn('Stroop: expected two .stroop-buttons button elements.');
     }
 
-    // Optional: preload images so they appear promptly
+    // Optional: preload images
     (function preload() {
-        const imgs = new Set();
-        Object.values(tests).forEach(t => t.images.forEach(i => imgs.add(ASSET_BASE + i)));
+        const imgs = directions.map(d => ASSET_BASE + d.img);
         imgs.forEach(src => {
             const im = new Image();
             im.src = src;
