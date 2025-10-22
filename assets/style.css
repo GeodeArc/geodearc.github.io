@@ -1,25 +1,20 @@
 /* nerd font */
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
+
 /* themes */
 :root { /* epic video https://www.youtube.com/watch?v=_gKEUYarehE  */
-  --base-color: rgb(255, 251, 247);
-  --base-secondary: #f5f1f0;
   --text-color: #000;
-  --text-secondary: #252525;
-  --primary-color: #bbf0ff;
-  --primary-secondary: #b6b5f4;
+  --primary-color: #d2f5ff;
+  --primary-secondary: #c7c6ff;
   --accent-color: #ff6200;
   --accent-secondary: #ff2701;
   --banner: rgba(235, 235, 235, 0.5);
 }
 .darkmode {
-  --base-color: #101010;
-  --base-secondary: #11162d;
   --text-color: #ffffff;
-  --text-secondary: #e0e0e0;
-  --primary-color: #294851;
-  --primary-secondary: #2e3084;
+  --primary-color: #182834;
+  --primary-secondary: #24124e;
   --accent-color: #ff6200;
   --accent-secondary: #ff2701;
   --banner: rgba(8, 8, 8, 0.5);
@@ -42,8 +37,15 @@ body {
   color: var(--text-color);
   overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+hr {
+    border: none;
+    height: 20px;
+}
 
-/* general styling */
+/* button/link styling */
 button {
   background: none;
   color: var(--text-color);
@@ -66,7 +68,6 @@ a {
   text-decoration: none;
 }
 
-
 /* header */
 header {
   display: flex;
@@ -78,10 +79,6 @@ header {
   display: flex;
   align-items: center;
   gap: 16px;
-}
-.headleft img {
-  height: 50px;
-  border-radius: 100%;
 }
 nav {
   display: flex;
@@ -140,13 +137,6 @@ nav {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-.temp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  padding: 40px;
 }
 .fourohfour {
   display: flex;

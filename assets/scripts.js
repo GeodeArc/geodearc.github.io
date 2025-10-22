@@ -35,17 +35,5 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
     });
 });
 
-// UPDATE HEADER TEXT
-function updateLogoText() {
-    const logoText = document.querySelector(".logotext"); // Header text shorten
-    if (logoText) {
-        if (window.innerWidth <= 480) {
-        logoText.textContent = "geode";
-        } else {
-            logoText.textContent = "geodes silly site";
-        }
-    }
-}
-
 updateLogoText();
 window.addEventListener("resize", updateLogoText);
