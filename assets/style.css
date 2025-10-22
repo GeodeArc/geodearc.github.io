@@ -80,6 +80,10 @@ header {
   align-items: center;
   gap: 16px;
 }
+.headleft img {
+  height: 50px;
+  border-radius: 100%;
+}
 nav {
   display: flex;
   background-color: inherit;
