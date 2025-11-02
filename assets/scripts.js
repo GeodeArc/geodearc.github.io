@@ -34,6 +34,3 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
         }
     });
 });
-
-updateLogoText();
-window.addEventListener("resize", updateLogoText);

@@ -1,11 +1,8 @@
 #!/bin/bash
 
-ver="$(curl -s https://gdrc.me/GeoDots/data/version)"
-
 while true; do
     echo 
-    echo "Welcome to GeoDots! Lets get started"
-    echo "Current version: $ver"
+    echo "TESTING BRANCH - Use with caution"
     echo 
     echo "It is recommended to update your system before installation."
     echo "Do this now? [Y/N]"
@@ -44,6 +41,6 @@ echo "Removing previous version if needed"
 sudo rm -r GeoDots
 clear
 echo "Cloning Repo"
-git clone https://github.com/GeodeArc/GeoDots
+git clone -b testing --single-branch https://github.com/GeodeArc/GeoDots
 cd GeoDots
 ./install.sh
