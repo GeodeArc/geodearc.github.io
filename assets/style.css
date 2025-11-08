@@ -5,6 +5,7 @@
 /* themes */
 :root { /* epic video https://www.youtube.com/watch?v=_gKEUYarehE  */
   --text-color: #000;
+  --text-secondary: #333;
   --primary-color: #d2f5ff;
   --primary-secondary: #c7c6ff;
   --accent-color: #ff6200;
@@ -12,7 +13,8 @@
   --banner: rgba(176, 184, 236, 0.5);
 }
 .darkmode {
-  --text-color: #ffffff;
+  --text-color: #fff;
+  --text-secondary: #ccc;
   --primary-color: #182334;
   --primary-secondary: #24124e;
   --accent-color: #ff6200;
@@ -67,6 +69,11 @@ button {
 a {
   color: var(--text-color);
   text-decoration: none;
+  cursor: pointer;
+}
+.textlow {
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 /* header */
@@ -200,28 +207,26 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
   margin: auto;
   padding: 40px;
 }
 .home-socials .social {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   background-color: var(--banner);
-  width: 30px;
-  height: 30px;
-  padding: 30px;
-  margin: 12px;
+  width: 60px;
+  height: 60px;
+  padding: 4px;
   border-radius: 18px;
-  gap: 20px;
   font-size: 30px;
+  transition: transform 0.2s;
 }
-.sgroup1, .sgroup2, .sgroup3 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.home-socials .social:hover {
+  transform: translateY(-5px);
 }
 
 /* 404 page */
@@ -291,7 +296,10 @@ footer .footer-content {
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  gap: 15px;
+  gap: 5px;
+}
+.socials {
+  margin-bottom: 15px;
 }
 .socials a {
   font-size: 28px;
@@ -313,8 +321,7 @@ footer .footer-content {
     padding: 0px !important;
   }
   .home-socials {
-    flex-direction: column !important;
-    padding: 40px 0px !important;
+    padding: 40px 0px;
   }
 }
 

@@ -34,3 +34,17 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
         }
     });
 });
+
+// CLIPBOARD COPY (copyClipboard)
+async function copyClip(element) {
+    element = element || document.querySelector(".copy");
+
+    const text = element.innerText;
+    await navigator.clipboard.writeText(text);
+
+    element.innerText = "(copied to clipboard :D)";
+
+    setTimeout(() => {
+        element.innerText = text;
+    }, 2000);
+}
