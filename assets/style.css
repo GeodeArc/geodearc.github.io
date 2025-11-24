@@ -173,6 +173,7 @@ nav {
 .home-proj .proj img {
   width: 100%;
   border-radius: 10px;
+  pointer-events: none;
 }
 .home-proj .projleft {
   display: flex;
@@ -188,19 +189,23 @@ nav {
   align-items: center;
   width: 45%;
 }
-.home-proj .projright .buttonreg {
+.home-proj .buttonreg {
   margin-top: 20px;
 }
-.home-proj .projright b {
+.home-proj b {
   margin-right: 10px;
 }
-.home-proj .projright ul {
+.home-proj ul {
   text-align: left;
   list-style-type: circle;
-  padding: 20px 0px;
+  padding-top: 20px;
 }
-.home-proj .projright li {
+.home-proj li {
   padding: 0px;
+}
+.home-proj hr {
+  margin: 4px;
+  opacity: 0;
 }
 
 .home-socials {
