@@ -16,88 +16,53 @@
 </head>
 
 <body>
-
     <header>
-        <div class="headleft">
-            <a href="/"><h2>/home/geode/</h2></a>
+        <div class="head-centered">
+            <div class="head-pfp">
+                <img onclick="location.href='/'" src="/assets/icon.png">
+            </div>
+            <div class="head-main">
+                <div class="head-text">
+                    <div class="head1">
+                        <a onclick="location.href='/'">GeodeArc</a>
+                    </div>
+                    <div class="head2">
+                        <a href="/">home</a>
+                        <div class="vr"></div>
+                        <a href="/404.html">placeholder</a>
+                        <div class="vr"></div>
+                        <a href="https://gdrc.me/GeoDots">try GeoDots</a>
+                    </div>
+                </div>
+                <div class="head-navbtn">                
+                    <button id="navbtn">
+                        <p class="nf-fa-navicon"></p>
+                        <p class="nf-fa-angle_left"></p>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="headright">
-            <nav>
-                <a href="/about/">about /</a>
-                <a href="/dir/">directory /</a>
-                <a href="https://github.com/GeodeArc/geodearc.github.io">page source</a>
-            </nav>
-            <button id="themeswitch">
-                <p class="nf-oct-moon"></p>
-                <p class="nf-md-white_balance_sunny"></p>
-            </button>
+        <div class="head-right">
+            <div class="head-github">
+                <a href="https://github.com/GeodeArc" class="nf-dev-github"></a>
+            </div>
+            <div class="head-theme">
+                <button id="themeswitch">
+                    <p class="nf-oct-moon"></p>
+                    <p class="nf-md-white_balance_sunny"></p>
+                </button>
+            </div>
         </div>
     </header>
 
     <div class="page-container">
         <div class="home-top">
-            <i>who is</i>
-            <h1><b class=special>GeodeArc</b></h1>
+            <p>hei, im</p>
+            <b class=special>geode</b>
         </div>
-        <div class="home-proj">
-            <div class="proj">
-                <div class="projleft">
-                    <h2>Streams</h2>
-                    <p>I stream here sometimes, usually gaming, but im always open to try new things.</p>
-                    <hr>
-                    <p>I play games like: Minecraft, Trackmania, Geometry Dash, etc.</p>
-                    <a href="https://twitch.tv/GeodeArc" class="buttonreg" style="font-size: 22px;">
-                        <b class="nf-fa-external_link"></b>
-                        twitch profile
-                    </a>
-                </div>
-                <div class="projright">
-                    <img src="/assets/twitch.jpg">
-                </div>
-            </div>
-            <div class="proj">
-                <div class="projleft">
-                    <img src="/assets/dots.jpg">
-                </div>
-                <div class="projright">
-                    <h2>GeoDots</h2>
-                    <p>My Simple, Consistent, and (relatively) Lightweight Hyprland Dots.</p>
-                    <ul>
-                        <li>Easy Installer, with built in troubleshooting capabilities</li>
-                        <li>Three different styles, all with light/dark modes</li>
-                        <li>Consistently styled, with a focus on aesthetics</li>
-                        <li>Color scheme adapts to your current wallpaper</li>
-                        <li>No unnecessary bloat, easy to configure and get started.</li>
-                    </ul>
-                    <a href="/dots/" class="buttonreg" style="font-size: 22px;">
-                        <b class="nf-fa-external_link"></b>
-                        try GeoDots
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="home-socials"> 
-            <div class="social" onclick="location.href='https://x.com/GeodeArc'">
-                <a class="nf-fa-twitter"></a>
-            </div>
-            <div class="social" onclick="location.href='https://twitch.tv/GeodeArc'">
-                <a class="nf-fa-twitch"></a>
-            </div>
-            <div class="social" onclick="location.href='https://discord.gg/YcgkFdhF8v'">
-                <a class="nf-fa-discord"></a>
-            </div>
-            <div class="social" onclick="location.href='https://youtube.com/@GeodeArc'">
-                <a class="nf-fa-youtube"></a>
-            </div>
-            <div class="social" onclick="location.href='https://www.reddit.com/user/_MrDogeFace_/'">
-                <a class="nf-fa-reddit"></a>
-            </div>
-            <div class="social" onclick="location.href='https://open.spotify.com/user/cweswlzbz5shfsmsnzmahsi61'">
-                <a class="nf-fa-spotify"></a>
-            </div>
-        </div>
+        <i>under construction</i>
     </div>
-
+    
     <footer>
         <div class="footer-content">
             <div class="socials">
@@ -107,7 +72,11 @@
                 <a class="nf-fa-github" href="https://github.com/GeodeArc"></a>
             </div>
             <p>&copy 2025 geodes crappy web designs</p>
-            <div class="textlow">contact me - <a class="copy" style="color: var(--text-secondary)" onclick=copyClip()>geode@gdrc.me</a></div>
+            <div class="footer-email">
+                <p>contact me: </p>
+                <a class="copy" onclick="copyClip()">geode@gdrc.me</a>
+                <a class="nf-fa-copy" id="copyicon" onclick="copyClip()"></a></div>
+            </div>
         </div>
     </footer>
 </body>
