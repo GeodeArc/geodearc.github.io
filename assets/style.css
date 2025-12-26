@@ -203,6 +203,39 @@ footer .footer-email {
   margin: 8px;
 }
 
+/* full navigation */
+#fullnav {
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+#fullnav .fullnav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 20px;
+  padding: 20px;
+}
+#fullnav .fullnav-content a {
+  display: flex;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 24px;
+}
+#fullnav #fullnavbtn {
+  display: none;
+  color: var(--text-color);
+  text-decoration: none;
+  margin-top: 30%;
+}
+
 /* home page */
 .home-top {
   display: flex;
