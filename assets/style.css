@@ -8,6 +8,7 @@
   --text-secondary: #333;
   --primary-color: #f4eae3;
   --accent-color: #ff6200;
+  --accent-diminished: rgba(255, 98, 0, 0.2);
   --accent-secondary: #ff8d01;
   --banner: rgba(235, 235, 235, 0.5);
   --btn: #fff2ec;
@@ -17,13 +18,14 @@
   --text-secondary: #ccc;
   --primary-color: #150b05;
   --accent-color: #ff6200;
+  --accent-diminished: rgba(255, 98, 0, 0.2);
   --accent-secondary: #ff2701;
   --banner: rgba(26, 21, 20, 0.5);
   --fullbanner: rgba(26, 21, 20);
   --btn: #291c1a;
 }
 
-/* main */
+/* main elements */
 * {
   margin: 0;
   padding: 0;
@@ -48,9 +50,27 @@ hr {
   border-radius: 100px;
   width: 80px;
 }
-.vr {
-  border-left: 1px solid var(--text-color);
-  margin: 2px 10px;
+/* https://stackoverflow.com/questions/54616139/how-can-i-animate-underline-from-left-to-right, im too stupid to understand this */
+.un {
+  display: inline-block;
+  background-image: linear-gradient(var(--text-color) 0 0);
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s,
+    background-position 0s 0.3s;
+}
+.un:hover {
+  background-position: 100% 100%;
+  background-size: 100% 2px;
+}
+.special {
+  color: transparent;
+  background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
+  text-shadow: 0 -1px 30px var(--accent-diminished);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* button/link styling */
@@ -72,6 +92,7 @@ button {
   background-size: 300% 300%;
   background-position: bottom left;
   border: 1px solid var(--accent-color);
+  box-shadow: 0 -1px 12px var(--accent-diminished);
   padding: 12px 20px;
   border-radius: 100px;
   font-size: 20px;
@@ -79,22 +100,35 @@ button {
 }
 .buttonreg:hover {
   background-position: top right;
+  box-shadow: 0 -1px 10px var(--accent-color);
 }
 a {
   color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
 }
-.special {
-  color: transparent;
-  background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
+
+/* fade animation */
+.fade {
+  opacity: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+  pointer-events: none;
+}
+.fade.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.fade.flex { /* for flex items */
+  display: flex;
+}
+.fade.block { /* for block items */
+  display: block;
 }
 
 /* header */
 header {
-  display: flex;  
+  display: flex;
+  align-items: center;  
   padding: 15px;
 }
 .head-centered {
@@ -118,21 +152,24 @@ header {
   padding: 20px 30px;
   width: 100%;
   border: 1px solid var(--accent-color);
+  box-shadow: 0 -1px 50px var(--accent-diminished);
   border-radius: 100px;
 }
 .head-main .head-text {
-  display: flex;
+  position: relative;
+  display: grid;
   margin-right: auto;
   font-size: 28px;
 }
+.head-text > .head1,
+.head-text > .head2 {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+}
 .head-main .head-text .head2 {
   font-size: 18px;
-  padding: 6px 0;
-}
-.head-main .head-text .head2 hr {
-  opacity: 1;
-  width: 1px;
-  color: var(--text-color) 
+  gap: 12px;
 }
 .head-main .head-navbtn {
   display: flex;
@@ -140,14 +177,16 @@ header {
 }
 .head-right {
   display: flex;
-  align-items: center;
-  padding: 20px;
+  position: absolute;
+  right: 0;
+  padding: 30px;
   gap: 20px;
   font-size: 18px;
 }
 #themeswitch, #navbtn {
   font-family: NerdFontsSymbols Nerd Font;
   font-size: 18px;
+  padding: 2px;
 }
 #themeswitch p:last-child{
   display: none;
@@ -158,7 +197,19 @@ header {
 .darkmode #themeswitch p:last-child{
   display: block;
 }
-
+#navbtn {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+}
+#navbtn p {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
 
 /* page stuff */
 .page-container {
@@ -179,6 +230,7 @@ footer {
   margin-top: auto;
   background-color: var(--banner);
   border-top: 1px solid var(--accent-color);
+  box-shadow: 0 -1px 50px var(--accent-diminished);
 }
 footer .footer-content {
   display: flex;
@@ -205,14 +257,14 @@ footer .footer-email {
 
 /* full navigation */
 #fullnav {
-  display: none;
+  display: flex;
   position: fixed;
   flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 6969;
 }
 #fullnav .fullnav-content {
   display: flex;
@@ -221,7 +273,6 @@ footer .footer-email {
   justify-content: center;
   margin: auto;
   gap: 20px;
-  padding: 20px;
 }
 #fullnav .fullnav-content a {
   display: flex;
@@ -230,10 +281,9 @@ footer .footer-email {
   font-size: 24px;
 }
 #fullnav #fullnavbtn {
-  display: none;
   color: var(--text-color);
   text-decoration: none;
-  margin-top: 30%;
+  margin-top: 100px;
 }
 
 /* home page */
@@ -276,6 +326,11 @@ footer .footer-email {
   .page-container {
     padding: 18px !important;
   }
+  .head-right {
+    position: relative;
+    padding: 10px;
+    padding-left: 20px;
+  }
 }
 @media  screen and (max-width: 600px) {
   .head-centered {
@@ -284,11 +339,11 @@ footer .footer-email {
   .head-right {
     padding-left: 30px; 
   }
-  .head-pfp img {
+  .head-main .head2 {
     display: none;
   }
-  .head-main .head-text .head2 {
-    flex-direction: column;
+  .head-pfp img {
+    display: none;
   }
   .fourohfour-dirs {
     flex-direction: column;

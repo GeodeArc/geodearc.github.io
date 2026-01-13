@@ -48,6 +48,15 @@ function copyClip() {
     }, 1000);
 }
 
+// ANIMATION STATES
+function show(el) {
+  el.classList.add("show");
+}
+function hide(el) {
+  el.classList.remove("show");
+}
+
+// NAVIGATION
 document.addEventListener("DOMContentLoaded", () => {
     const head1 = document.querySelector(".head1");
     const head2 = document.querySelector(".head2");
@@ -56,41 +65,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbtn = document.getElementById("navbtn");
     const fullnav = document.getElementById("fullnav");
     const fullnavbtn = document.getElementById("fullnavbtn");
-
-    // initial state
-    head1.style.display = "block";
-    head2.style.display = "none";
-    navicon.style.display = "block";
-    backicon.style.display = "none";
-    fullnavbtn.style.display = "none";
+    
+    let headerOpen = false;
+    let fullnavOpen = false;
 
     navbtn.addEventListener("click", () => {
-        const isOpen = head2.style.display === "flex";
         const isResponsive = window.innerWidth < 600;
+
         if (!isResponsive) {
-            if (!isOpen) {
-                // open menu
-                head1.style.display = "none";
-                head2.style.display = "flex";
-                navicon.style.display = "none";
-                backicon.style.display = "block";
+            if (!headerOpen) {
+                hide(head1);
+                show(head2);
+                hide(navicon);
+                show(backicon);
+                headerOpen = true;
             } else {
-                // close menu
-                head1.style.display = "block";
-                head2.style.display = "none";
-                navicon.style.display = "block";
-                backicon.style.display = "none";
+                show(head1);
+                hide(head2);
+                show(navicon);
+                hide(backicon);
+                headerOpen = false;
             }
         } else {
-            if (!isOpen) {
-                // open full nav
-                fullnav.style.display = "flex";
-                fullnavbtn.style.display = "flex";
+            if (!fullnavOpen) {
+                show(fullnav);
+                show(fullnavbtn);
+                fullnavOpen = true;
             }
         }
     });
+
     fullnavbtn.addEventListener("click", () => {
-        fullnav.style.display = "none";
-        fullnavbtn.style.display = "none";
+        hide(fullnav);
+        hide(fullnavbtn);
+        fullnavOpen = false;
     });
 });
