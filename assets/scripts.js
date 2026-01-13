@@ -101,3 +101,29 @@ document.addEventListener("DOMContentLoaded", () => {
         fullnavOpen = false;
     });
 });
+
+// RANDOM FASTFETCH IMAGE ON PAGE LOAD (/assets/fastfetch/[1-5].png)
+const ffrandimg = document.querySelector(".ffrandimg");
+
+const ffrandimgArr = [
+    "/assets/fastfetch/1.png",
+    "/assets/fastfetch/2.png",
+    "/assets/fastfetch/3.png",
+    "/assets/fastfetch/4.png",
+    "/assets/fastfetch/5.png",
+    "/assets/fastfetch/6.png",
+];
+
+const ffrandimgIndex = Math.floor(Math.random() * ffrandimgArr.length);
+
+ffrandimg.src = ffrandimgArr[ffrandimgIndex];
+
+// TIME
+function displayTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString(); 
+    document.getElementById('clock').textContent = timeString;
+}
+
+displayTime(); 
+setInterval(displayTime, 1000); 
