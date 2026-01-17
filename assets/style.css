@@ -391,7 +391,8 @@ footer .footer-email {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 60px 350px;
+  padding: 60px 0;
+  padding-left: 350px;
 }
 .term-cols {
   display: flex;
