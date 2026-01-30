@@ -1,5 +1,8 @@
-// THEME SWITCH
+// THEME SWITCH / HEADER SCROLL
 document.addEventListener("DOMContentLoaded", () => { // theme switching
+    const header = document.querySelector("header");
+    const headmid = document.querySelector(".head-centered");
+    const headmain = document.querySelector(".head-main");
     const togglebtn = document.getElementById("themeswitch");
     const body = document.body;
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -32,6 +35,12 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
         if (!localStorage.getItem("theme")) { 
             applyTheme(event.matches ? "dark" : "light");
         }
+    });
+
+    window.addEventListener("scroll", () => { 
+        header.classList.toggle("scrolled", window.scrollY > 50);
+        headmid.classList.toggle("scrolled-centered", window.scrollY > 50);
+        headmain.classList.toggle("scrolled-main", window.scrollY > 50);
     });
 });
 
