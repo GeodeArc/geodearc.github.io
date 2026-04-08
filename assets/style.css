@@ -258,6 +258,7 @@ header {
 }
 .page-content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -348,6 +349,7 @@ footer .footer-email {
   font-size: 50px;
   font-weight: 900;
 }
+
 .terminal {
   position: relative;
   font-family: "JetBrains Mono", "NerdFontsSymbols Nerd Font", monospace;
@@ -443,6 +445,92 @@ footer .footer-email {
 .tcol6 { background-color: var(--tcol6); }
 .tcol7 { background-color: var(--tcol7); }
 .tcol8 { background-color: var(--tcol8); }
+
+.home-midsec {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1080px;
+  margin: 20px;
+  margin-top: 50px;
+  background-color: var(--banner);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 -1px 20px var(--accent-diminished);
+  border-radius: 18px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.home-midsec .ms-left {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 50%;
+  padding: 30px;
+  gap: 10px;
+  z-index: 2;
+}
+.home-midsec .ms-left h2 {
+  font-size: 40px;
+  font-weight: 1000;
+}
+.home-midsec .ms-left-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 120px;
+  gap: 10px;
+}
+.home-midsec .ms-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-midsec .ms-right img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover; 
+  object-position: right center;
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  mask-image: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0));
+}
+
+.home-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+.home-socials .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--banner);
+  width: 60px;
+  height: 60px;
+  padding: 4px;
+  border-radius: 100%;
+  border: 1px solid var(--accent-color);
+  font-size: 30px;
+  transition: transform 0.2s;
+}
+.home-socials .social:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 -1px 10px var(--accent-color);
+}
 
 /* 404 page */
 .fourohfour {
