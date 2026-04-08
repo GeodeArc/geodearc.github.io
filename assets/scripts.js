@@ -111,22 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// RANDOM FASTFETCH IMAGE ON PAGE LOAD (/assets/fastfetch/[1-5].png)
-const ffrandimg = document.querySelector(".ffrandimg");
-
-const ffrandimgArr = [
-    "/assets/fastfetch/1.png",
-    "/assets/fastfetch/2.png",
-    "/assets/fastfetch/3.png",
-    "/assets/fastfetch/4.png",
-    "/assets/fastfetch/5.png",
-    "/assets/fastfetch/6.png",
-];
-
-const ffrandimgIndex = Math.floor(Math.random() * ffrandimgArr.length);
-
-ffrandimg.src = ffrandimgArr[ffrandimgIndex];
-
 // TIME
 function displayTime() {
     const now = new Date();
@@ -136,3 +120,79 @@ function displayTime() {
 
 displayTime(); 
 setInterval(displayTime, 1000); 
+
+// last.fm api
+// pls dont abuse my api key 😔
+const API_KEY = "6e524d1c84e12bd6fbd9e202b1442995";
+const USER = "GeodeArc";
+const BASE = "https://ws.audioscrobbler.com/2.0/";
+
+async function fetchLastFM(method, params = {}) {
+    const url = new URL(BASE);
+
+    url.searchParams.set("method", method);
+    url.searchParams.set("user", USER);
+    url.searchParams.set("api_key", API_KEY);
+    url.searchParams.set("format", "json");
+
+    Object.entries(params).forEach(([k, v]) =>
+    url.searchParams.set(k, v)
+    );
+
+    const res = await fetch(url);
+    return res.json();
+}
+
+function truncate(str, max = 24) {
+    if (!str) return "N/A";
+    return str.length > max
+    ? str.slice(0, max) + ".."
+    : str;
+}
+
+async function loadMusicStats() {
+    const [
+    recent,
+    topTracks,
+    topArtists,
+    topAlbums,
+    userInfo
+] = await Promise.all([
+    fetchLastFM("user.getRecentTracks", { limit: 1 }),
+    fetchLastFM("user.getTopTracks", { limit: 1, period: "7day" }),
+    fetchLastFM("user.getTopArtists", { limit: 1, period: "7day" }),
+    fetchLastFM("user.getTopAlbums", { limit: 1, period: "7day" }),
+    fetchLastFM("user.getInfo")
+]);
+
+    const now = recent?.recenttracks?.track?.[0];
+    const track = topTracks?.toptracks?.track?.[0];
+    const artist = topArtists?.topartists?.artist?.[0];
+    const album = topAlbums?.topalbums?.album?.[0];
+    const scrobbles = userInfo?.user?.playcount;
+
+    const title = truncate(now?.name, 24);
+
+    document.querySelector(".nf-fa-music").innerHTML =
+        ` <b>Listening to:</b> ${title} - ${now?.artist["#text"]}`;
+
+    document.querySelector(".nf-fa-record_vinyl").innerHTML =
+        ` <b>Top Track:</b> ${track?.name ?? "N/A"}`;
+
+    document.querySelector(".nf-md-account_music").innerHTML =
+        ` <b>Top Artist:</b> ${artist?.name ?? "N/A"}`;
+
+    document.querySelector(".nf-md-music_box").innerHTML =
+        ` <b>Top Album:</b> ${album?.name ?? "N/A"}`;
+
+    document.querySelector(".nf-md-music_clef_treble").innerHTML =
+        ` <b>Scrobbles:</b> ${scrobbles ?? "N/A"}`;
+}
+
+loadMusicStats();
+
+// UPTIME
+setInterval(() => {
+    const time = performance.now() / 1000;
+    document.querySelector(".nf-md-timer").innerHTML = ` <b>Uptime:</b> ${time.toFixed(0)}s`;
+}, 1000); 
