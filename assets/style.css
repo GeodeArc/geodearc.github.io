@@ -469,7 +469,6 @@ footer .footer-email {
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  width: 50%;
   padding: 30px;
   gap: 10px;
   z-index: 2;
@@ -603,5 +602,8 @@ footer .footer-email {
   }
   .term-info {
     font-size: 14px !important;
+  }
+  .buttonreg {
+    font-size: 15px !important;
   }
 }
