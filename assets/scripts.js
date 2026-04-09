@@ -36,12 +36,6 @@ document.addEventListener("DOMContentLoaded", () => { // theme switching
             applyTheme(event.matches ? "dark" : "light");
         }
     });
-
-    window.addEventListener("scroll", () => { 
-        header.classList.toggle("scrolled", window.scrollY > 50);
-        headmid.classList.toggle("scrolled-centered", window.scrollY > 50);
-        headmain.classList.toggle("scrolled-main", window.scrollY > 50);
-    });
 });
 
 // CLIPBOARD COPY (copyClipboard)
@@ -70,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const head1 = document.querySelector(".head1");
     const head2 = document.querySelector(".head2");
     const navicon = document.querySelector(".nf-fa-navicon");
-    const backicon = document.querySelector(".nf-fa-angle_left");
+    const backicon = document.querySelector(".nf-md-close");
     const navbtn = document.getElementById("navbtn");
     const fullnav = document.getElementById("fullnav");
     const fullnavbtn = document.getElementById("fullnavbtn");
