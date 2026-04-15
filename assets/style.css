@@ -11,7 +11,7 @@
   --accent-color: #ff8401;
   --accent-diminished: rgba(255, 98, 0, 0.2);
   --accent-secondary: #ff6200;
-  --banner: rgba(235, 235, 235, 0.5);
+  --banner: #EFEBE7;
   --grid: rgba(218, 218, 218, 0.516);
   --btn: #fff2ec;
 }
@@ -22,7 +22,7 @@
   --accent-color: #ff2701;
   --accent-diminished: rgba(255, 98, 0, 0.2);
   --accent-secondary: #ff8401;
-  --banner: rgba(26, 21, 20, 0.5);
+  --banner: #17100C;
   --grid: rgba(33, 26, 25, 0.5);
   --btn: #291c1a;
 }
@@ -177,8 +177,6 @@ header {
   width: 100%;
   border: 1px solid var(--accent-color);
   box-shadow: 0 -1px 50px var(--accent-diminished);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 100px;
 }
 .head-main .head-text {
@@ -267,8 +265,6 @@ footer {
   background-color: var(--banner);
   border-top: 1px solid var(--accent-color);
   box-shadow: 0 -1px 50px var(--accent-diminished);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 footer .footer-content {
   display: flex;
@@ -353,8 +349,6 @@ footer .footer-email {
   padding: 20px 30px;
   border: 1px solid var(--accent-color);
   box-shadow: 0 -1px 20px var(--accent-diminished);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 18px;
   box-sizing: border-box;
   overflow: auto;
@@ -479,8 +473,6 @@ footer .footer-email {
   background-color: var(--banner);
   border: 1px solid var(--accent-color);
   box-shadow: 0 -1px 20px var(--accent-diminished);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 18px;
   box-sizing: border-box;
   overflow: hidden;
@@ -521,6 +513,7 @@ footer .footer-email {
   object-position: right center;
   -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0));
   mask-image: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  pointer-events: none;
 }
 
 .home-socials {
@@ -543,8 +536,6 @@ footer .footer-email {
   padding: 4px;
   border-radius: 100%;
   border: 1px solid var(--accent-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   font-size: 30px;
   transition: transform 0.2s;
 }
