@@ -8,9 +8,9 @@
   --text-color: #000;
   --text-secondary: #333;
   --primary-color: #f4eae3;
-  --accent-color: #ff6200;
+  --accent-color: #ff8401;
   --accent-diminished: rgba(255, 98, 0, 0.2);
-  --accent-secondary: #ff8d01;
+  --accent-secondary: #ff6200;
   --banner: rgba(235, 235, 235, 0.5);
   --grid: rgba(218, 218, 218, 0.516);
   --btn: #fff2ec;
@@ -19,9 +19,9 @@
   --text-color: #fff;
   --text-secondary: #ccc;
   --primary-color: #150b05;
-  --accent-color: #ff6200;
+  --accent-color: #ff2701;
   --accent-diminished: rgba(255, 98, 0, 0.2);
-  --accent-secondary: #ff2701;
+  --accent-secondary: #ff8401;
   --banner: rgba(26, 21, 20, 0.5);
   --grid: rgba(33, 26, 25, 0.5);
   --btn: #291c1a;
@@ -405,6 +405,30 @@ footer .footer-email {
   left: 0;
   margin: 60px 10px;
 }
+.terminal .term-logo pre {
+  background: linear-gradient(
+    90deg,
+    var(--accent-secondary),
+    var(--accent-color),
+    var(--accent-secondary),
+    var(--accent-color)
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 1000;
+  font-size: 14px;
+  animation: gradientShift 2s linear infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 .terminal .term-info {
   display: flex;
   flex-direction: column;
