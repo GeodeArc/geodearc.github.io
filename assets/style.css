@@ -8,7 +8,7 @@
   --text-color: #000;
   --text-secondary: #333;
   --primary-color: #f4eae3;
-  --accent-color: #ff8401;
+  --accent-color: #ffa601;
   --accent-diminished: rgba(255, 98, 0, 0.2);
   --accent-secondary: #ff6200;
   --banner: #EFEBE7;
@@ -46,6 +46,8 @@
 html {
   font-family: Inter, NerdFontsSymbols Nerd Font, Arial, sans-serif;
   font-style: normal;
+  overflow-x: hidden;
+
 }
 body {
   display: flex;
@@ -148,8 +150,6 @@ a {
 header {
   display: flex;
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   align-items: center;
   padding-top: 20px;
@@ -567,12 +567,12 @@ footer .footer-email {
     padding: 18px !important;
     padding-top: 150px !important;
   }
-  header {
+  .head-pfp {
     padding-left: 20px;
   }
   .head-right {
     padding-left: 20px;
-    padding-right: 40px;
+    padding-right: 20px;
     position: relative;
   }
   .scrolled-centered {
