@@ -171,13 +171,13 @@ async function loadMusicStats() {
         ` <b>Listening to:</b> ${title} - ${now?.artist["#text"]}`;
 
     document.querySelector(".nf-fa-record_vinyl").innerHTML =
-        ` <b>Top Track:</b> ${track?.name ?? "N/A"}`;
+        ` <b>Top Track:</b> ${truncate(track?.name, 24)} - ${track?.artist?.name ?? "N/A"}`;
 
     document.querySelector(".nf-md-account_music").innerHTML =
         ` <b>Top Artist:</b> ${artist?.name ?? "N/A"}`;
 
     document.querySelector(".nf-md-music_box").innerHTML =
-        ` <b>Top Album:</b> ${album?.name ?? "N/A"}`;
+        ` <b>Top Album:</b> ${truncate(album?.name, 24)} - ${album?.artist?.name ?? "N/A"}`;
 
     document.querySelector(".nf-md-music_clef_treble").innerHTML =
         ` <b>Scrobbles:</b> ${scrobbles ?? "N/A"}`;

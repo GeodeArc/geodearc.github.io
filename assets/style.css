@@ -85,11 +85,20 @@ hr {
   background-size: 100% 2px;
 }
 .special {
-  color: transparent;
-  background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
-  text-shadow: 0 -1px 30px var(--accent-diminished);
+  background: linear-gradient(
+    90deg,
+    var(--accent-secondary),
+    var(--accent-color),
+    var(--accent-secondary),
+    var(--accent-color)
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientShift 2s linear infinite;
 }
 
 /* button/link styling */
