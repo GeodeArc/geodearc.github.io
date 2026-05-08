@@ -176,7 +176,7 @@ async function loadMusicStats() {
     document.querySelector(".nf-md-account_music").innerHTML =
         ` <b>Top Artist:</b> ${artist?.name ?? "N/A"}`;
 
-    document.querySelector(".nf-md-music_box").innerHTML =
+    document.querySelector(".nf-md-book_music_outline").innerHTML =
         ` <b>Top Album:</b> ${truncate(album?.name, 24)} - ${album?.artist?.name ?? "N/A"}`;
 
     document.querySelector(".nf-md-music_clef_treble").innerHTML =
@@ -188,5 +188,5 @@ loadMusicStats();
 // UPTIME
 setInterval(() => {
     const time = performance.now() / 1000;
-    document.querySelector(".nf-md-timer").innerHTML = ` <b>Uptime:</b> ${time.toFixed(0)}s`;
+    document.querySelector(".nf-md-av_timer").innerHTML = ` <b>Uptime:</b> ${time.toFixed(0)}s`;
 }, 1000); 
