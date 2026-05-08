@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 unlucky</title>
     <link rel="icon" type="image/x-icon" href="/assets/icon.png">
+    <link rel="stylesheet" href="/assets/nerd.css">
     <link href="/assets/style.css" rel="stylesheet" type="text/css">
     <script src="/assets/scripts.js" defer type="text/javascript" ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
@@ -17,7 +18,7 @@
             <div class="head-pfp">
                 <img onclick="location.href='/'" src="/assets/icon.png">
             </div>
-            <div class="head-main">
+            <nav class="head-main">
                 <div class="head-text">
                     <div class="head1 fade block show">
                         <a onclick="location.href='/'">GeodeArc</a>
@@ -34,14 +35,14 @@
                         <p class="nf-md-close fade block"></p>
                     </button>
                 </div>
-            </div>
+            </nav>
         </div>
         <div class="head-right">
             <div class="head-github">
-                <a href="https://github.com/GeodeArc/geodearc.github.io" class="nf-dev-github"></a>
+                <a href="https://github.com/GeodeArc/geodearc.github.io" class="nf-dev-github" aria-label="github link"></a>
             </div>
             <div class="head-theme">
-                <button id="themeswitch">
+                <button id="themeswitch" aria-label="theme switch">
                     <p class="nf-oct-moon"></p>
                     <p class="nf-md-white_balance_sunny"></p>
                 </button>
@@ -49,7 +50,7 @@
         </div>
     </header>
 
-    <div class="page-container">
+    <main class="page-container">
         <div class="fourohfour">
             <h1>404 unlucky 🥀</h1>
             <h2>get better smh</h2>
@@ -58,21 +59,21 @@
                 <a class="buttonreg" href="/404.html">go to the 404 page again</a>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-content">
             <div class="socials">
-                <a class="nf-fa-twitter" href="https://x.com/GeodeArc"></a>
-                <a class="nf-fa-twitch" href="https://twitch.tv/GeodeArc"></a>
-                <a class="nf-fa-youtube" href="https://youtube.com/@GeodeArc"></a>
-                <a class="nf-fa-github" href="https://github.com/GeodeArc"></a>
+                <a class="nf-fa-twitter" href="https://x.com/GeodeArc" aria-label="footer link - twitter"></a>
+                <a class="nf-fa-twitch" href="https://twitch.tv/GeodeArc" aria-label="footer link - twitch"></a>
+                <a class="nf-fa-youtube" href="https://youtube.com/@GeodeArc" aria-label="footer link - youtube"></a>
+                <a class="nf-fa-github" href="https://github.com/GeodeArc" aria-label="footer link - github"></a>
             </div>
             <p>&copy 2025 geodes crappy web designs</p>
             <div class="footer-email">
                 <p>contact me: </p>
-                <a class="copy" onclick="copyClip()">geode@gdrc.me</a>
-                <a class="nf-fa-copy" id="copyicon" onclick="copyClip()"></a></div>
+                <p style="cursor: pointer" class="copy" onclick="copyClip()">geode@gdrc.me</p>
+                <p style="cursor: pointer" class="nf-fa-copy" id="copyicon" onclick="copyClip()"></p>
             </div>
         </div>
     </footer>

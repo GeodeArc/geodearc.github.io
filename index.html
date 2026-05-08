@@ -7,6 +7,7 @@
     <meta name="author" content="GeodeArc">
     <title>GeodeArc - my stupid website</title>
     <link rel="icon" type="image/x-icon" href="/assets/icon.png">
+    <link rel="stylesheet" href="/assets/nerd.css">
     <link href="/assets/style.css" rel="stylesheet" type="text/css">
     <script src="/assets/scripts.js" defer type="text/javascript" ></script>
     <link rel="canonical" href="https://gdrc.me/">
@@ -22,7 +23,7 @@
             <div class="head-pfp">
                 <img onclick="location.href='/'" src="/assets/icon.png">
             </div>
-            <div class="head-main">
+            <nav class="head-main">
                 <div class="head-text">
                     <div class="head1 fade block show">
                         <a onclick="location.href='/'">GeodeArc</a>
@@ -39,14 +40,14 @@
                         <p class="nf-md-close fade block"></p>
                     </button>
                 </div>
-            </div>
+            </nav>
         </div>
         <div class="head-right">
             <div class="head-github">
-                <a href="https://github.com/GeodeArc/geodearc.github.io" class="nf-dev-github"></a>
+                <a href="https://github.com/GeodeArc/geodearc.github.io" class="nf-dev-github" aria-label="github link"></a>
             </div>
             <div class="head-theme">
-                <button id="themeswitch">
+                <button id="themeswitch" aria-label="theme switch">
                     <p class="nf-oct-moon"></p>
                     <p class="nf-md-white_balance_sunny"></p>
                 </button>
@@ -54,7 +55,7 @@
         </div>
     </header>
 
-    <div class="page-container">
+    <main class="page-container">
         <div class="home-top">
             <p>hei, im</p>
             <b class=special>geode</b>
@@ -141,46 +142,46 @@
                     </div>
                 </div>
                 <div class="ms-right">
-                    <img src="/assets/dots.jpg">
+                    <img src="/assets/dots.webp" alt="geodots background image">
                 </div>
             </div>
         </div>
         <h3 style="padding: 15px; font-weight: 300; font-size: 30px;">socials :D</h3>
         <div class="home-socials"> 
             <div class="social" onclick="location.href='https://x.com/GeodeArc'">
-                <a class="nf-fa-twitter"></a>
+                <a class="nf-fa-twitter" aria-label="social link - twitter"></a>
             </div>
             <div class="social" onclick="location.href='https://twitch.tv/GeodeArc'">
-                <a class="nf-fa-twitch"></a>
+                <a class="nf-fa-twitch" aria-label="social link - twitch"></a>
             </div>
             <div class="social" onclick="location.href='https://youtube.com/@GeodeArc'">
-                <a class="nf-fa-youtube"></a>
+                <a class="nf-fa-youtube" aria-label="social link - youtube"></a>
             </div>
             <div class="social" onclick="location.href='https://discord.gg/YcgkFdhF8v'">
-                <a class="nf-fa-discord"></a>
+                <a class="nf-fa-discord" aria-label="social link - discord"></a>
             </div>
             <div class="social" onclick="location.href='https://www.reddit.com/user/_MrDogeFace_/'">
-                <a class="nf-fa-reddit"></a>
+                <a class="nf-fa-reddit" aria-label="social link - reddit"></a>
             </div>
             <div class="social" onclick="location.href='https://open.spotify.com/user/cweswlzbz5shfsmsnzmahsi61'">
-                <a class="nf-fa-spotify"></a>
+                <a class="nf-fa-spotify" aria-label="social link - spotify"></a>
             </div>
         </div>
-    </div>
+    </main>
     
     <footer>
         <div class="footer-content">
             <div class="socials">
-                <a class="nf-fa-twitter" href="https://x.com/GeodeArc"></a>
-                <a class="nf-fa-twitch" href="https://twitch.tv/GeodeArc"></a>
-                <a class="nf-fa-youtube" href="https://youtube.com/@GeodeArc"></a>
-                <a class="nf-fa-github" href="https://github.com/GeodeArc"></a>
+                <a class="nf-fa-twitter" href="https://x.com/GeodeArc" aria-label="footer link - twitter"></a>
+                <a class="nf-fa-twitch" href="https://twitch.tv/GeodeArc" aria-label="footer link - twitch"></a>
+                <a class="nf-fa-youtube" href="https://youtube.com/@GeodeArc" aria-label="footer link - youtube"></a>
+                <a class="nf-fa-github" href="https://github.com/GeodeArc" aria-label="footer link - github"></a>
             </div>
             <p>&copy 2025 geodes crappy web designs</p>
             <div class="footer-email">
                 <p>contact me: </p>
-                <a class="copy" onclick="copyClip()">geode@gdrc.me</a>
-                <a class="nf-fa-copy" id="copyicon" onclick="copyClip()"></a></div>
+                <p style="cursor: pointer" class="copy" onclick="copyClip()">geode@gdrc.me</p>
+                <p style="cursor: pointer" class="nf-fa-copy" id="copyicon" onclick="copyClip()"></p>
             </div>
         </div>
     </footer>
