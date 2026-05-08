@@ -7,15 +7,19 @@
     <meta name="author" content="GeodeArc">
     <title>GeodeArc - my stupid website</title>
     <link rel="icon" type="image/x-icon" href="/assets/icon.png">
-    <link rel="stylesheet" href="/assets/nerd.css">
-    <link href="/assets/style.css" rel="stylesheet" type="text/css">
-    <script src="/assets/scripts.js" defer type="text/javascript" ></script>
+    <link rel="stylesheet" href="/assets/fonts/nerd.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <script src="/scripts.js" defer type="text/javascript" ></script>
     <link rel="canonical" href="https://gdrc.me/">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/Symbols.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
+
+<noscript>
+  <link rel="stylesheet" href="/assets/nerd.css">
+</noscript>
 
 <body>
     <header>
@@ -35,7 +39,7 @@
                     </div>
                 </div>
                 <div class="head-navbtn">                
-                    <button id="navbtn">
+                    <button id="navbtn" aria-label="navigation button">
                         <p class="nf-fa-navicon fade block show"></p>
                         <p class="nf-md-close fade block"></p>
                     </button>
@@ -147,25 +151,30 @@
             </div>
         </div>
         <h3 style="padding: 15px; font-weight: 300; font-size: 30px;">socials :D</h3>
-        <div class="home-socials"> 
-            <div class="social" onclick="location.href='https://x.com/GeodeArc'">
-                <a class="nf-fa-twitter" aria-label="social link - twitter"></a>
-            </div>
-            <div class="social" onclick="location.href='https://twitch.tv/GeodeArc'">
-                <a class="nf-fa-twitch" aria-label="social link - twitch"></a>
-            </div>
-            <div class="social" onclick="location.href='https://youtube.com/@GeodeArc'">
-                <a class="nf-fa-youtube" aria-label="social link - youtube"></a>
-            </div>
-            <div class="social" onclick="location.href='https://discord.gg/YcgkFdhF8v'">
-                <a class="nf-fa-discord" aria-label="social link - discord"></a>
-            </div>
-            <div class="social" onclick="location.href='https://www.reddit.com/user/_MrDogeFace_/'">
-                <a class="nf-fa-reddit" aria-label="social link - reddit"></a>
-            </div>
-            <div class="social" onclick="location.href='https://open.spotify.com/user/cweswlzbz5shfsmsnzmahsi61'">
-                <a class="nf-fa-spotify" aria-label="social link - spotify"></a>
-            </div>
+        <div class="home-socials">
+            <a class="social nf-fa-twitter"
+            href="https://x.com/GeodeArc"
+            aria-label="Twitter"></a>
+
+            <a class="social nf-fa-twitch"
+            href="https://twitch.tv/GeodeArc"
+            aria-label="Twitch"></a>
+
+            <a class="social nf-fa-youtube"
+            href="https://youtube.com/@GeodeArc"
+            aria-label="YouTube"></a>
+
+            <a class="social nf-fa-discord"
+            href="https://discord.gg/YcgkFdhF8v"
+            aria-label="Discord"></a>
+
+            <a class="social nf-fa-reddit"
+            href="https://www.reddit.com/user/_MrDogeFace_/"
+            aria-label="Reddit"></a>
+
+            <a class="social nf-fa-spotify"
+            href="https://open.spotify.com/user/cweswlzbz5shfsmsnzmahsi61"
+            aria-label="Spotify"></a>
         </div>
     </main>
     
