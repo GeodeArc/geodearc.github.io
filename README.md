@@ -1,3 +1,3 @@
 # my silly site
 
-https://gdrc.me
+https://geodearc.com
