@@ -8,6 +8,13 @@ apptype="$(cat $HOME/Dots/Options/apptype)"
 theme="$(cat $HOME/Dots/Options/theme)"
 style="$(cat $HOME/Dots/Options/style)"
 
+echo "Downloading latest package lists"
+curl -o /tmp/pkg-pacman -s https://geodearc.com/GeoDots/data/pkg-pacman
+curl -o /tmp/pkg-aurs -s https://geodearc.com/GeoDots/data/pkg-aurs
+curl -o /tmp/pkg-gtk -s https://geodearc.com/GeoDots/data/pkg-gtk
+curl -o /tmp/pkg-qt -s https://geodearc.com/GeoDots/data/pkg-qt
+clear
+
 PACMAN_PKGS="$(cat /tmp/pkg-pacman)"
 AUR_PKGS="$(cat /tmp/pkg-aurs)"
 GTK_PKGS="$(cat /tmp/pkg-gtk)"
