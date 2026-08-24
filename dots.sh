@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ver="$(curl -s https://geodearc.com/GeoDots/data/version)"
+ver="$(curl -s https://geodearc.com/GeoDots/data/ver)"
 
 while true; do
     echo 

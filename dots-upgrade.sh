@@ -1,7 +1,5 @@
 #!/bin/bash
 
-newver="$(curl -s https://geodearc.com/GeoDots/data/version)"
-
 aurhelper="$(cat $HOME/Dots/Options/aurpkgs)"
 aurupgrade="$(cat $HOME/Dots/Options/aurhelper)"
 apptype="$(cat $HOME/Dots/Options/apptype)"
@@ -250,7 +248,6 @@ dotsupgrade() {
                 ln -s $HOME/.cache/wal/colors-rofi.rasi $HOME/.config/rofi/options/colors.rasi
                 ln -s $HOME/.cache/wal/colors-waybar.css $HOME/.config/waybar/colors.css
                 
-                echo $newver > $HOME/Dots/Options/currentver
                 echo "postupgrade" > $HOME/Dots/Options/startup
 
                 clear
