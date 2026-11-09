@@ -38,14 +38,14 @@
     --btn: #291c1a;
 }
 .terminal-container {
-    --tcol1: #a55955;
-    --tcol2: #77a563;
-    --tcol3: #9b8d52;
-    --tcol4: #406993;
-    --tcol5: #82648a;
-    --tcol6: #527a7a;
+    --tcol1: #c24842;
+    --tcol2: #75ca51;
+    --tcol3: #d5bd5b;
+    --tcol4: #407ab5;
+    --tcol5: #9d5eaf;
+    --tcol6: #5b9f9f;
     --tcol7: #b7a8a8;
-    --tcol8: #444444;
+    --tcol8: #7d7a7a;
     --tty-bg: #000;
     --tty-fg: #fff;
     font-family: var(--term-font);

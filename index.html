@@ -21,17 +21,20 @@
 </head>
 
 <body>
-    <div class="terminal-container">
-        <div class="term-output" id="output">
-            <p style="color: var(--tcol1)">UNDER CONSTRUCTION, MUCH TO BE DONE</p>
-            <b style="color: var(--tcol2)">Welcome to GeodeArc's Guest Terminal</b><br><br>
-            (hint: Try typing `help` to get a list of available commands.)<br><br>
-            <a href="/classic/" style="color: var(--tcol4)">Alternatively, click this line to return to the original site.</a><br><br>
-        
+    <main>
+        <div class="terminal-container">
+            <div class="term-output" id="output">
+                <p style="color: var(--tcol1)">UNDER CONSTRUCTION, MUCH TO BE DONE</p>
+                <b style="color: var(--tcol2)">Welcome to GeodeArc's Guest Terminal</b><br><br>
+                (hint: Try typing `help` to get a list of available commands.)<br><br>
+                <a href="/classic/" style="color: var(--tcol4)">Alternatively, click this line to return to the original site.</a><br><br>
+            
+            </div>
+            <div class="term-input">
+                <span id="host">[guest@GeOS ~]$ </span>
+                <span id="prompt" contenteditable="true" spellcheck="false" autocomplete="off" autofocus></span>
+            </div>
         </div>
-        <div class="term-input">
-            <span id="host">[guest@GeOS ~]$ </span>
-            <span id="prompt" contenteditable="true" spellcheck="false" autocomplete="off" autofocus></span>
-        </div>
-    </div>
+    </main>
 </body>
+</html>
