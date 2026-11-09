@@ -81,6 +81,9 @@ html, body {
     flex-direction: row;
     gap: 10px;
 }
+.term-input #host {
+    flex-shrink: 0;
+}
 .term-input #prompt {
     outline: none;
     border: none;
@@ -130,4 +133,20 @@ html, body {
 .fetch-key {
     font-weight: bold;
     color: var(--tcol4);
+}
+
+@media  screen and (max-width: 800px) {
+    .geofetch-logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .fetch-row {
+        align-items: start;
+        text-align: left;
+        flex-direction: column;
+        gap: 0px;
+        margin-bottom: 10px;
+    }
 }
