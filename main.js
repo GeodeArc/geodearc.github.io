@@ -9,6 +9,8 @@ var tty = true; // LATER
 //
 const input = document.getElementById('prompt');
 const output = document.getElementById('output');
+let commandHistory = [];
+let historyIndex = -1;
 
 input.focus();
 window.addEventListener('click', () => input.focus());
@@ -17,13 +19,38 @@ input.addEventListener('blur', () => input.focus());
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         e.preventDefault();
-        const typed = input.innerText.trim();
-        runCommand(typed);
+        const raw = input.innerText.trim();
+        
+        if (raw) {
+            commandHistory.push(raw);
+            historyIndex = commandHistory.length;
+        }
+
+        runCommand(raw);
         input.innerText = '';
     }
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
         commandStop();
         input.innerText = '';
+    }
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (commandHistory.length > 0 && historyIndex > 0) {
+            historyIndex--;
+            input.innerText = commandHistory[historyIndex];
+            placeCaretAtEnd(input);
+        }
+    } 
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            input.innerText = commandHistory[historyIndex];
+            placeCaretAtEnd(input);
+        } else if (historyIndex === commandHistory.length - 1) {
+            historyIndex = commandHistory.length;
+            input.innerText = '';
+        }
     }
     if (e.key === 'Tab') {
         e.preventDefault();
@@ -60,6 +87,7 @@ const commands = {
     "ls": () => printOutput("no files in this directory<br><br><p style='color: var(--tcol1)'>(yet to implement...)</p>"),
     "cat": () => printOutput("mmrrrooow~ meow!<br><br><p style='color: var(--tcol1)'>(yet to implement...)</p>"),
     "start": () => printOutput("Opening in new tab...") & open('/classic/'),
+    "whoami": () => printOutput("thats a great question"),
     
     // secrets (not very secret if you look at the source code, aka here)
     "nvim": () => printOutput("'nano' not installed"),
@@ -161,6 +189,7 @@ function cmdHelp() {
         <b>geofetch</b> - fastfetch like fetch<br>
         <b>clear</b> - clear terminal screen<br>
         <b>help</b> - show this menu, wow<br>
+        <b>whoami</b> - current user logged in<br>
         <b>cat</b> - check contents of file<br>
         <b>echo</b> - echo text to file/output<br>
         <b>ls</b> - list current directory<br>
