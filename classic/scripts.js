@@ -146,18 +146,18 @@ function truncate(str, max = 24) {
 
 async function loadMusicStats() {
     const [
-    recent,
-    topTracks,
-    topArtists,
-    topAlbums,
-    userInfo
-] = await Promise.all([
-    fetchLastFM("user.getRecentTracks", { limit: 1 }),
-    fetchLastFM("user.getTopTracks", { limit: 1, period: "7day" }),
-    fetchLastFM("user.getTopArtists", { limit: 1, period: "7day" }),
-    fetchLastFM("user.getTopAlbums", { limit: 1, period: "7day" }),
-    fetchLastFM("user.getInfo")
-]);
+        recent,
+        topTracks,
+        topArtists,
+        topAlbums,
+        userInfo
+    ] = await Promise.all([
+        fetchLastFM("user.getRecentTracks", { limit: 1 }),
+        fetchLastFM("user.getTopTracks", { limit: 1, period: "7day" }),
+        fetchLastFM("user.getTopArtists", { limit: 1, period: "7day" }),
+        fetchLastFM("user.getTopAlbums", { limit: 1, period: "7day" }),
+        fetchLastFM("user.getInfo")
+    ]);
 
     const now = recent?.recenttracks?.track?.[0];
     const track = topTracks?.toptracks?.track?.[0];

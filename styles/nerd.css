@@ -26,10 +26,12 @@
 .nf-fa-record_vinyl:before{content:"\efbd"}
 .nf-md-book_music_outline:before{content:"\f1693"}
 .nf-md-account_music:before{content:"\f0803"}
-.nf-md-music_clef_treble:before{content:"\f036"}
+.nf-md-music_clef_treble:before{content:"\f201"}
 .nf-linux-hyprland:before{content:"\f359"}
 .nf-fa-laptop:before{content:"\f109"}
 .nf-md-av_timer:before{content:"\f006b"}
+.nf-oct-browser:before{content:"\f488"}
+
 
 .nf-fa-sun:before{content:"\f185"}
 .nf-fa-moon_o:before{content:"\f186"}
